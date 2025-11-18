@@ -501,7 +501,7 @@ section {
     color: var(--text-secondary);
 }
 
-/* Кнопка настройки бота */
+/* Кнопка настройки бота (только для админа) */
 #bot-config-button {
     position: fixed !important;
     bottom: 20px !important;
@@ -560,6 +560,31 @@ section {
 #config-message {
     margin-top: 15px;
     min-height: 20px;
+}
+
+/* Кнопка активации админ-режима */
+#admin-activate-btn {
+    position: fixed !important;
+    bottom: 20px !important;
+    left: 20px !important;
+    z-index: 10000 !important;
+    background: rgba(30, 30, 30, 0.7) !important;
+    color: var(--text-secondary) !important;
+    border: 1px solid var(--neon-purple) !important;
+    border-radius: 20px !important;
+    padding: 8px 15px !important;
+    cursor: pointer !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    opacity: 0.3 !important;
+    transition: all 0.3s ease !important;
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+#admin-activate-btn:hover {
+    opacity: 1 !important;
+    background: var(--neon-purple) !important;
+    color: black !important;
 }
 
 /* Адаптивность */
@@ -629,6 +654,16 @@ section {
     .app-tabs {
         flex-direction: column;
     }
+
+    #bot-config-button {
+        bottom: 60px !important;
+        right: 20px !important;
+    }
+
+    #admin-activate-btn {
+        bottom: 20px !important;
+        left: 20px !important;
+    }
 }
 
 @media (max-width: 576px) {
@@ -643,6 +678,11 @@ section {
     #bot-config-button {
         padding: 10px 15px !important;
         font-size: 12px !important;
+    }
+
+    #admin-activate-btn {
+        padding: 6px 12px !important;
+        font-size: 10px !important;
     }
 
     .about-placeholder {

@@ -1,4 +1,4 @@
-// JavaScript для мини-приложения с интеграцией Telegram бота
+// JavaScript для мини-приложения с системой админ-доступа
 document.addEventListener('DOMContentLoaded', function () {
     console.log('Mini-app загружен, инициализируем мини-приложение');
 
@@ -217,15 +217,98 @@ document.addEventListener('DOMContentLoaded', function () {
         dateInput.min = `${yyyy}-${mm}-${dd}`;
     }
 
-    // Создаем кнопку настройки бота
-    createBotConfigPanel();
+    // СИСТЕМА АДМИН-ДОСТУПА
+    createAdminAccessSystem();
 });
 
+// ==================== СИСТЕМА АДМИН-ДОСТУПА ====================
+
+const ADMIN_PASSWORD = "8Nirvana8!"; // Поменяйте этот пароль!
+
+function createAdminAccessSystem() {
+    console.log('Создаем систему админ-доступа');
+
+    // Проверяем, активирован ли уже админ-режим
+    if (localStorage.getItem('neonglow_admin') === 'true') {
+        createBotConfigPanel();
+        return;
+    }
+
+    // Создаем кнопку активации админ-режима (малозаметную)
+    const adminButton = document.createElement('button');
+    adminButton.id = 'admin-activate-btn';
+    adminButton.innerHTML = '⚙️ Админ';
+    adminButton.title = 'Нажмите для доступа к настройкам';
+
+    adminButton.addEventListener('click', function (e) {
+        e.stopPropagation();
+        activateAdminMode();
+    });
+
+    document.body.appendChild(adminButton);
+
+    // Секретная комбинация клавиш для админа
+    let konamiCode = [];
+    const secretCode = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65]; // ↑↑↓↓←→←→BA
+
+    document.addEventListener('keydown', function (e) {
+        konamiCode.push(e.keyCode);
+        if (konamiCode.length > secretCode.length) {
+            konamiCode.shift();
+        }
+
+        if (arraysEqual(konamiCode, secretCode)) {
+            activateAdminMode();
+            konamiCode = [];
+        }
+    });
+
+    console.log('Система админ-доступа создана');
+}
+
+function arraysEqual(a, b) {
+    if (a.length !== b.length) return false;
+    for (let i = 0; i < a.length; i++) {
+        if (a[i] !== b[i]) return false;
+    }
+    return true;
+}
+
+function activateAdminMode() {
+    const password = prompt('🔐 Введите пароль для доступа к настройкам бота:');
+
+    if (password === ADMIN_PASSWORD) {
+        localStorage.setItem('neonglow_admin', 'true');
+        alert('✅ Админ-режим активирован!');
+
+        // Удаляем кнопку активации и создаем панель настроек
+        const adminBtn = document.getElementById('admin-activate-btn');
+        if (adminBtn) adminBtn.remove();
+
+        createBotConfigPanel();
+    } else if (password !== null) {
+        alert('❌ Неверный пароль!');
+    }
+}
+
+function deactivateAdminMode() {
+    localStorage.removeItem('neonglow_admin');
+    const button = document.getElementById('bot-config-button');
+    if (button) {
+        button.remove();
+    }
+
+    // Восстанавливаем кнопку активации
+    createAdminAccessSystem();
+
+    alert('🔓 Админ-режим деактивирован.');
+}
+
+// Создание панели настройки бота
 function createBotConfigPanel() {
-    console.log('Создаем кнопку настройки бота');
+    console.log('Создаем кнопку настройки бота (админ-режим)');
 
     if (document.getElementById('bot-config-button')) {
-        console.log('Кнопка уже существует');
         return;
     }
 
@@ -250,10 +333,37 @@ function createBotConfigPanel() {
         showBotConfigPanel();
     });
 
+    // Добавляем долгое нажатие для деактивации админ-режима
+    let pressTimer;
+    configButton.addEventListener('mousedown', function () {
+        pressTimer = window.setTimeout(function () {
+            deactivateAdminMode();
+        }, 3000);
+    });
+
+    configButton.addEventListener('mouseup', function () {
+        clearTimeout(pressTimer);
+    });
+
+    configButton.addEventListener('mouseleave', function () {
+        clearTimeout(pressTimer);
+    });
+
+    configButton.addEventListener('touchstart', function () {
+        pressTimer = window.setTimeout(function () {
+            deactivateAdminMode();
+        }, 3000);
+    });
+
+    configButton.addEventListener('touchend', function () {
+        clearTimeout(pressTimer);
+    });
+
     document.body.appendChild(configButton);
     console.log('Кнопка настройки бота создана');
 }
 
+// Показ панели настройки бота
 function showBotConfigPanel() {
     const panel = document.createElement('div');
     panel.id = 'bot-config-panel';
@@ -274,8 +384,12 @@ function showBotConfigPanel() {
             <button id="save-bot-config" class="btn neon-btn">Сохранить</button>
             <button id="close-bot-config" class="btn" style="background: #555; color: white;">Закрыть</button>
             <button id="test-bot-config" class="btn" style="background: var(--neon-green); color: black;">Тест</button>
+            <button id="deactivate-admin" class="btn" style="background: #ff5555; color: white;">Выйти</button>
         </div>
         <div id="config-message"></div>
+        <div style="margin-top: 15px; font-size: 12px; color: var(--text-secondary);">
+            💡 Для деактивации админ-режима: зажмите кнопку "Настройка бота" на 3 секунды
+        </div>
     `;
 
     document.body.appendChild(panel);
@@ -285,6 +399,7 @@ function showBotConfigPanel() {
         document.body.removeChild(panel);
     });
     document.getElementById('test-bot-config').addEventListener('click', testBotConfig);
+    document.getElementById('deactivate-admin').addEventListener('click', deactivateAdminMode);
 
     panel.addEventListener('click', (e) => e.stopPropagation());
     document.addEventListener('click', () => {
@@ -303,7 +418,7 @@ function saveBotConfig() {
         localStorage.setItem('neonglow_bot_token', token);
         localStorage.setItem('neonglow_chat_id', chatId);
 
-        messageDiv.innerHTML = '<p style="color: var(--neon-green);">Настройки сохранены!</p>';
+        messageDiv.innerHTML = '<p style="color: var(--neon-green);">✅ Настройки сохранены!</p>';
 
         if (typeof telegramBot !== 'undefined') {
             telegramBot.botToken = token;
@@ -315,7 +430,7 @@ function saveBotConfig() {
             if (panel) document.body.removeChild(panel);
         }, 2000);
     } else {
-        messageDiv.innerHTML = '<p style="color: #ff5555;">Заполните все поля корректными значениями</p>';
+        messageDiv.innerHTML = '<p style="color: #ff5555;">❌ Заполните все поля корректными значениями</p>';
     }
 }
 
@@ -325,11 +440,11 @@ async function testBotConfig() {
     const messageDiv = document.getElementById('config-message');
 
     if (!token || token === 'YOUR_BOT_TOKEN' || !chatId || chatId === 'YOUR_CHAT_ID') {
-        messageDiv.innerHTML = '<p style="color: #ff5555;">Заполните все поля перед тестом</p>';
+        messageDiv.innerHTML = '<p style="color: #ff5555;">❌ Заполните все поля перед тестом</p>';
         return;
     }
 
-    messageDiv.innerHTML = '<p>Отправка тестового сообщения...</p>';
+    messageDiv.innerHTML = '<p>📤 Отправка тестового сообщения...</p>';
 
     try {
         const testBot = new TelegramBot();
@@ -353,9 +468,10 @@ async function testBotConfig() {
     }
 }
 
+// Резервное создание кнопки админа через 3 секунды
 setTimeout(() => {
-    if (!document.getElementById('bot-config-button')) {
-        console.log('Резервное создание кнопки настройки бота');
-        createBotConfigPanel();
+    if (!document.getElementById('admin-activate-btn') && !document.getElementById('bot-config-button')) {
+        console.log('Резервное создание системы админ-доступа');
+        createAdminAccessSystem();
     }
 }, 3000);
