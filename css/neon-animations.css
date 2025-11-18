@@ -1,0 +1,150 @@
+/* Неоновые эффекты и анимации - менее яркие */
+.neon-text {
+    text-shadow:
+        0 0 3px currentColor,
+        0 0 6px currentColor,
+        0 0 12px currentColor;
+    /* Убираем анимацию мерцания для всех neon-text */
+}
+
+/* Оставляем анимацию только для конкретных элементов */
+.hero-title.neon-text,
+.section-title.neon-text {
+    animation: neon-flicker 4s infinite alternate;
+}
+
+@keyframes neon-flicker {
+
+    0%,
+    18%,
+    22%,
+    25%,
+    53%,
+    57%,
+    100% {
+        text-shadow:
+            0 0 3px currentColor,
+            0 0 6px currentColor,
+            0 0 12px currentColor;
+    }
+
+    20%,
+    24%,
+    55% {
+        text-shadow:
+            0 0 2px currentColor,
+            0 0 4px currentColor;
+    }
+}
+
+/* Явно отключаем анимацию для логотипа в хедере и футере */
+.header .neon-text,
+.logo .neon-text,
+.footer .neon-text {
+    animation: none !important;
+}
+
+.neon-link {
+    position: relative;
+    text-decoration: none;
+}
+
+.neon-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--neon-pink), var(--neon-blue));
+    transition: width 0.3s ease;
+}
+
+.neon-link:hover::after {
+    width: 100%;
+}
+
+.neon-btn {
+    background: linear-gradient(45deg, var(--neon-pink), var(--neon-blue));
+    color: var(--dark-bg);
+    font-weight: 700;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.neon-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+    z-index: -1;
+}
+
+.neon-btn:hover::before {
+    left: 100%;
+}
+
+.neon-card {
+    position: relative;
+    border: 1px solid transparent;
+    background-clip: padding-box;
+}
+
+.neon-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 15px;
+    padding: 2px;
+    background: linear-gradient(45deg, var(--neon-pink), var(--neon-blue), var(--neon-purple), var(--neon-green));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.neon-card:hover::before {
+    opacity: 0.7;
+}
+
+/* Анимации для появления элементов при скролле */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Анимация для неоновой рамки */
+.neon-frame {
+    animation: neon-border 4s infinite alternate;
+}
+
+@keyframes neon-border {
+    0% {
+        box-shadow:
+            0 0 3px var(--neon-pink),
+            0 0 6px var(--neon-pink),
+            0 0 9px var(--neon-pink);
+    }
+
+    100% {
+        box-shadow:
+            0 0 6px var(--neon-blue),
+            0 0 12px var(--neon-blue),
+            0 0 18px var(--neon-blue);
+    }
+}

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeonGlow - Косметология будущего</title>
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon_neon_lips_16x16.jpg">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <meta name="theme-color" content="#0a0a0a">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/neon-animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1 class="neon-text">Neon<span>Glow</span></h1>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="#home" class="neon-link">Главная</a></li>
+                    <li><a href="#services" class="neon-link">Услуги</a></li>
+                    <li><a href="#about" class="neon-link">О нас</a></li>
+                    <li><a href="#mini-app" class="neon-link">Мини-приложение</a></li>
+                    <li><a href="#contact" class="neon-link">Контакты</a></li>
+                </ul>
+            </nav>
+            <div class="burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h2 class="neon-text hero-title">Косметология <span>будущего</span></h2>
+                <p class="hero-subtitle">Инновационные процедуры с использованием передовых технологий</p>
+                <a href="#contact" class="btn neon-btn">Записаться на консультацию</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title neon-text">Наши услуги</h2>
+            <div class="services-grid">
+                <div class="service-card neon-card">
+                    <div class="service-icon">✨</div>
+                    <h3>Эстетическая косметология</h3>
+                    <p>Профессиональные процедуры для улучшения состояния кожи</p>
+                </div>
+                <div class="service-card neon-card">
+                    <div class="service-icon">💎</div>
+                    <h3>Аппаратная косметология</h3>
+                    <p>Современные технологии для омоложения и коррекции</p>
+                </div>
+                <div class="service-card neon-card">
+                    <div class="service-icon">🌟</div>
+                    <h3>Инъекционная косметология</h3>
+                    <p>Безопасные инъекционные методики омоложения</p>
+                </div>
+                <div class="service-card neon-card">
+                    <div class="service-icon">🔮</div>
+                    <h3>Уходовые процедуры</h3>
+                    <p>Индивидуальный подбор уходовых программ</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2 class="section-title neon-text">О Нас</h2>
+                    <p>YanaGlow - это современный косметологический центр, где сочетаются инновационные технологии и
+                        индивидуальный подход к каждому клиенту.</p>
+                    <p>Наша команда сертифицированных специалистов с медицинским образованием поможет вам достичь
+                        желаемого результата с максимальной эффективностью и безопасностью.</p>
+                    <ul class="about-features">
+                        <li class="neon-feature">Современное оборудование</li>
+                        <li class="neon-feature">Качественные препараты</li>
+                        <li class="neon-feature">Индивидуальный подход</li>
+                        <li class="neon-feature">Комфортная атмосфера</li>
+                    </ul>
+                </div>
+                <div class="about-image">
+                    <div class="neon-frame">
+                        <div class="image-placeholder about-placeholder">
+                            <span>about-image.jpg</span>
+                            <p>Добавьте изображение интерьера</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mini App Section -->
+    <section id="mini-app" class="mini-app">
+        <div class="container">
+            <h2 class="section-title neon-text">Мини-приложение</h2>
+            <p class="section-subtitle">Рассчитайте стоимость процедур и запишитесь на консультацию</p>
+
+            <div class="app-container">
+                <div class="app-tabs">
+                    <button class="app-tab active" data-tab="calculator">Калькулятор</button>
+                    <button class="app-tab" data-tab="booking">Запись</button>
+                    <button class="app-tab" data-tab="consultation">Консультация</button>
+                </div>
+
+                <div class="app-content">
+                    <!-- Калькулятор -->
+                    <div id="calculator" class="app-tab-content active">
+                        <h3>Калькулятор стоимости процедур</h3>
+                        <div class="form-group">
+                            <label for="procedure">Выберите процедуру:</label>
+                            <select id="procedure" class="neon-select">
+                                <option value="0">-- Выберите процедуру --</option>
+                                <option value="3500">Чистка лица</option>
+                                <option value="6000">Пилинг</option>
+                                <option value="12000">Биоревитализация</option>
+                                <option value="15000">Ботокс</option>
+                                <option value="8000">Лазерная эпиляция</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="sessions">Количество сеансов:</label>
+                            <input type="number" id="sessions" class="neon-input" min="1" value="1">
+                        </div>
+                        <button id="calculate" class="btn neon-btn">Рассчитать стоимость</button>
+                        <div id="result" class="result"></div>
+                    </div>
+
+                    <!-- Запись -->
+                    <div id="booking" class="app-tab-content">
+                        <h3>Запись на процедуру</h3>
+                        <form id="booking-form">
+                            <div class="form-group">
+                                <label for="name">Ваше имя:</label>
+                                <input type="text" id="name" class="neon-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Телефон:</label>
+                                <input type="tel" id="phone" class="neon-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="date">Желаемая дата:</label>
+                                <input type="date" id="date" class="neon-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="service">Услуга:</label>
+                                <select id="service" class="neon-select" required>
+                                    <option value="">-- Выберите услугу --</option>
+                                    <option value="Чистка лица">Чистка лица</option>
+                                    <option value="Пилинг">Пилинг</option>
+                                    <option value="Биоревитализация">Биоревитализация</option>
+                                    <option value="Ботокс">Ботокс</option>
+                                    <option value="Лазерная эпиляция">Лазерная эпиляция</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn neon-btn">Записаться</button>
+                        </form>
+                    </div>
+
+                    <!-- Консультация -->
+                    <div id="consultation" class="app-tab-content">
+                        <h3>Запрос на консультацию</h3>
+                        <form id="consultation-form">
+                            <div class="form-group">
+                                <label for="consult-name">Ваше имя:</label>
+                                <input type="text" id="consult-name" class="neon-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="consult-phone">Телефон:</label>
+                                <input type="tel" id="consult-phone" class="neon-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Сообщение:</label>
+                                <textarea id="message" class="neon-textarea" rows="4"></textarea>
+                            </div>
+                            <button type="submit" class="btn neon-btn">Отправить запрос</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title neon-text">Контакты</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <h3>Адрес</h3>
+                        <p>г.Ростов-на-Дону, ул. Социалестическая</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>Телефон</h3>
+                        <p>+7 (988) 99-77-519</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>Email</h3>
+                        <p>info@neonglow.ru</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>Часы работы</h3>
+                        <p>Пн-Пт: 9:00 - 21:00</p>
+                        <p>Сб-Вс: 10:00 - 18:00</p>
+                    </div>
+                </div>
+                <div class="contact-map">
+                    <div class="map-placeholder">
+                        <div class="image-placeholder map-placeholder-img">
+                            <span>map-image.jpg</span>
+                            <p>Добавьте карту или фото</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2 class="neon-text">Neon<span>Glow</span></h2>
+                    <p>Косметология будущего уже здесь</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Быстрые ссылки</h3>
+                    <ul>
+                        <li><a href="#home">Главная</a></li>
+                        <li><a href="#services">Услуги</a></li>
+                        <li><a href="#about">О нас</a></li>
+                        <li><a href="#mini-app">Мини-приложение</a></li>
+                        <li><a href="#contact">Контакты</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h3>Мы в соцсетях</h3>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon">Instagram</a>
+                        <a href="#" class="social-icon">Facebook</a>
+                        <a href="#" class="social-icon">Telegram</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 NeonGlow. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="config.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/telegram-bot.js"></script>
+    <script src="js/mini-app.js"></script>
+</body>
+
+</html>
