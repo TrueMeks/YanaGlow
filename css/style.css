@@ -1,4 +1,3 @@
-/* Общие стили */
 * {
     margin: 0;
     padding: 0;
@@ -62,7 +61,6 @@ section {
     font-size: 1rem;
 }
 
-/* Header */
 .header {
     position: fixed;
     top: 0;
@@ -124,7 +122,6 @@ section {
     transition: 0.3s;
 }
 
-/* Hero Section */
 .hero {
     height: 100vh;
     position: relative;
@@ -169,7 +166,6 @@ section {
     color: var(--text-secondary);
 }
 
-/* Services Section */
 .services {
     background-color: var(--darker-bg);
 }
@@ -207,7 +203,6 @@ section {
     color: var(--text-secondary);
 }
 
-/* About Section */
 .about-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -268,7 +263,6 @@ section {
     z-index: 1;
 }
 
-/* Стили для placeholder изображений */
 .image-placeholder {
     width: 100%;
     height: 100%;
@@ -304,7 +298,6 @@ section {
     height: 300px;
 }
 
-/* Стили для реальных изображений */
 .about-img,
 .map-img {
     width: 100%;
@@ -315,7 +308,6 @@ section {
     z-index: 2;
 }
 
-/* Mini App Section */
 .mini-app {
     background-color: var(--darker-bg);
 }
@@ -398,7 +390,6 @@ section {
     font-weight: 600;
 }
 
-/* Contact Section */
 .contact-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -429,7 +420,6 @@ section {
     overflow: hidden;
 }
 
-/* Footer */
 .footer {
     background-color: var(--darker-bg);
     padding: 50px 0 20px;
@@ -501,7 +491,6 @@ section {
     color: var(--text-secondary);
 }
 
-/* Кнопка настройки бота (только для админа) */
 #bot-config-button {
     position: fixed !important;
     bottom: 20px !important;
@@ -527,7 +516,6 @@ section {
     box-shadow: 0 0 20px rgba(204, 102, 255, 0.8) !important;
 }
 
-/* Панель настройки бота */
 #bot-config-panel {
     position: fixed;
     top: 50%;
@@ -562,7 +550,6 @@ section {
     min-height: 20px;
 }
 
-/* Кнопка активации админ-режима */
 #admin-activate-btn {
     position: fixed !important;
     bottom: 20px !important;
@@ -587,7 +574,6 @@ section {
     color: black !important;
 }
 
-/* Адаптивность */
 @media (max-width: 992px) {
 
     .about-content,

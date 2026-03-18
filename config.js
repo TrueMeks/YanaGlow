@@ -1,17 +1,12 @@
-// Конфигурационный файд для Telegram бота
-// ДАННЫЕ НАСТРАИВАЮТСЯ ВРУЧНУЮ ПЕРЕД ЗАГРУЗКОЙ НА САЙТ
 
 const config = {
-    // ЗАМЕНИТЕ НА РЕАЛЬНЫЕ ЗНАЧЕНИЯ ПЕРЕД РАЗМЕЩЕНИЕМ САЙТА
-    BOT_TOKEN: 'YOUR_BOT_TOKEN',    // Токен вашего бота
-    CHAT_ID: 'YOUR_CHAT_ID',        // Ваш chat_id
+    BOT_TOKEN: 'YOUR_BOT_TOKEN',
+    CHAT_ID: 'YOUR_CHAT_ID',
 
-    // Настройки сайта
     SITE_NAME: 'NeonGlow Cosmetology',
     ADMIN_EMAIL: 'admin@neonglow.ru'
 };
 
-// Для демонстрации проверяем наличие реальных значений в localStorage
 try {
     const storedToken = localStorage.getItem('neonglow_bot_token');
     const storedChatId = localStorage.getItem('neonglow_chat_id');

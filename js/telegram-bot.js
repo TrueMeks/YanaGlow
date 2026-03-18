@@ -1,4 +1,3 @@
-// Telegram Bot для отправки заявок
 class TelegramBot {
     constructor() {
         this.botToken = 'YOUR_BOT_TOKEN';

@@ -1,8 +1,6 @@
-// Основной JavaScript для сайта
 document.addEventListener('DOMContentLoaded', function () {
     console.log('Основной скрипт загружен');
 
-    // Мобильное меню
     const burger = document.querySelector('.burger');
     const nav = document.querySelector('.nav');
 
@@ -13,7 +11,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Плавная прокрутка для якорных ссылок
     const anchorLinks = document.querySelectorAll('a[href^="#"]');
 
     anchorLinks.forEach(link => {
@@ -33,7 +30,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     behavior: 'smooth'
                 });
 
-                // Закрываем мобильное меню после клика
                 if (nav && nav.classList.contains('active')) {
                     burger.classList.remove('active');
                     nav.classList.remove('active');
@@ -42,7 +38,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Изменение стиля хедера при скролле
     const header = document.querySelector('.header');
 
     if (header) {
@@ -57,7 +52,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Анимация появления элементов при скролле
     const fadeElements = document.querySelectorAll('.service-card, .about-text, .about-image, .contact-info, .contact-map');
 
     const fadeInOnScroll = function () {
@@ -71,11 +65,9 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     };
 
-    // Запускаем при загрузке и при скролле
     fadeInOnScroll();
     window.addEventListener('scroll', fadeInOnScroll);
 
-    // Добавляем класс fade-in для элементов при загрузке
     fadeElements.forEach(element => {
         element.classList.add('fade-in');
     });
